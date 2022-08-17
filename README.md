@@ -1,10 +1,25 @@
 # Weather-Journal App Project
 
-## Overview
-This project requires you to create an asynchronous web app that uses Web API and user data to dynamically update the UI. 
+## Table of Contents
 
-## Instructions
-This will require modifying the `server.js` file and the `website/app.js` file. You can see `index.html` for element references, and once you are finished with the project steps, you can use `style.css` to style your application to customized perfection.
+* [Table of contents](#table-of-contents)
+* [Description](#description)
+* [Requirements](#requirements)
+* [Technologies used](#technologies-used)
 
-## Extras
-If you are interested in testing your code as you go, you can use `tests.js` as a template for writing and running some basic tests for your code.
+## Description
+
+This is the Weather Journal project of Udacity Web Development Professional track.
+
+## Requirements
+
+1. Build the Server side (Server.js)
+2. Build the Client side (app.js)
+3. Import data from Temperature API bazed on Zip Code
+
+## Technologies used
+
+1. HTML
+2. CSS
+3. JavaScript
+4. API

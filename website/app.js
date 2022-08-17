@@ -1,7 +1,7 @@
 /* Global Variables */
 // Personal API Key for OpenWeatherMap API
 const baseUrl = "https://api.openweathermap.org/data/2.5/weather?zip=";
-const key = ""
+const key = "&appid=bcee34ae9d55c65f70a923b779252ff8&units=imperial"
 
 // Create a new date instance dynamically with JS
 let d = new Date();
@@ -20,11 +20,7 @@ async function generate() {
             date: newDate,
             userInput: document.getElementById('feelings').value
         })
-    })
-    .then(function(data) {
-        getFromServer("/all");
-    }).then(function(data) {
-        updateUi(data);
+        updateUi();
     })
 }
 
@@ -41,7 +37,7 @@ const getApiData = async (url = '') => {
 }
 
 /* Function to POST data */
-const postToServer = async (url = '', apiData) => {
+const postToServer = async (url = '', apiData = {}) => {
     const response = await fetch(url, {
         method: 'POST', 
         credentials: 'same-origin', 
@@ -61,20 +57,15 @@ const postToServer = async (url = '', apiData) => {
 
 
 /* Function to GET Project Data */
-const getFromServer = async (url = '') => {
-    const response = await fetch(url);
+const updateUi = async () => {
+    const req = await fetch('/all');
     try {
-        const responseData = await response.json();
-        return responseData;
+        const allData = await req.json();
+        document.getElementById('date').innerHTML = "Date: " + allData.date;
+        document.getElementById('temp').innerHTML = "Temperature: " + allData.temperature;
+        document.getElementById('content').innerHTML = "Feelings: " + allData.userInput;
     }
     catch(error) {
         console.log("error: ", error);
     }
-}
-
-// Update UI function
-function updateUi(serverData) {
-    document.getElementById('date').innerHTML = serverData.date;
-    document.getElementById('temp').innerHTML = serverData.temperature;
-    document.getElementById('content').innerHTML = serverData.userInput;
 }
